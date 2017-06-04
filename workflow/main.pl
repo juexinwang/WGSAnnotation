@@ -32,9 +32,9 @@ while ( $line = <IN> ) {
 	chomp($line);
 	my @array = split( "\\s+", $line );
 	if ( $count > 0 ) {
-		if (   $array[ $ARGV[3] ] eq $array[ $ARGV[4] ]
-			or $array[ $ARGV[3] ] eq "./."
-			or $array[ $ARGV[4] ] eq "./." )
+		if (   $array[ @ARGV[3] ] eq $array[ @ARGV[4] ]
+			or $array[ @ARGV[3] ] eq "./."
+			or $array[ @ARGV[4] ] eq "./." )
 		{
 			print "C:".$line."\n";
 			$outArrayC[$countC] = $line . "\n";
