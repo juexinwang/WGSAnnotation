@@ -36,6 +36,7 @@ while ( $line = <IN> ) {
 			or $array[ $ARGV[3] ] eq "./."
 			or $array[ $ARGV[4] ] eq "./." )
 		{
+			print "C:".$line."\n";
 			$outArrayC[$countC] = $line . "\n";
 			$countC++;
 		}
@@ -47,6 +48,7 @@ while ( $line = <IN> ) {
 			if (    ( $arrayT1[0] eq $arrayT1[1] )
 				and ( $arrayT2[0] eq $arrayT2[1] ) )
 			{
+				print "Dhomo:".$line."\n";
 				$outArrayDhomo[$countDhomo] = $line . "\n";
 				$countDhomo++;
 			}
@@ -54,10 +56,12 @@ while ( $line = <IN> ) {
 				( $arrayT1[0] eq $arrayT1[1] and $arrayT2[0] ne $arrayT2[1] ) 
 			  or ( $arrayT1[0] ne $arrayT1[1] and $arrayT2[0] eq $arrayT2[1] ) )
 			  {
+			  	  print "Dhohe:".$line."\n";
 				  $outArrayDhohe[$countDhohe] = $line . "\n";
 				  $countDhohe++;
 			}
 			else {
+				  print "Dhete:".$line."\n";
 				  $outArrayDhete[$countDhete] = $line . "\n";
 				  $countDhete++;
 			}
