@@ -6,12 +6,12 @@ use strict;
 
 open( IN,   $ARGV[0] )                     or die("Cannot find INPUT\n");
 open( OUTC, ">diff" . $ARGV[1] . "c.txt" ) or die("Cannot find OUTPUTc\n");
-open( OUTD, ">diff" . $ARGV[2] . "d.txt" ) or die("Cannot find OUTPUTd\n");
-open( OUTDhomo, ">diff" . $ARGV[2] . "dhomo.txt" )
+open( OUTD, ">diff" . $ARGV[1] . "d.txt" ) or die("Cannot find OUTPUTd\n");
+open( OUTDhomo, ">diff" . $ARGV[1] . "dhomo.txt" )
   or die("Cannot find OUTPUTdhomo\n");
-open( OUTDhohe, ">diff" . $ARGV[2] . "dhohe.txt" )
+open( OUTDhohe, ">diff" . $ARGV[1] . "dhohe.txt" )
   or die("Cannot find OUTPUTdhohe\n");
-open( OUTDhete, ">diff" . $ARGV[2] . "dhete.txt" )
+open( OUTDhete, ">diff" . $ARGV[1] . "dhete.txt" )
   or die("Cannot find OUTPUTdhete\n");
 
 my $countC     = 0;
@@ -32,9 +32,9 @@ while ( $line = <IN> ) {
 	chomp($line);
 	my @array = split( "\\s+", $line );
 	if ( $count > 0 ) {
-		if (   $array[ @ARGV[3] ] eq $array[ @ARGV[4] ]
-			or $array[ @ARGV[3] ] eq "./."
-			or $array[ @ARGV[4] ] eq "./." )
+		if (   $array[ @ARGV[2] ] eq $array[ @ARGV[3] ]
+			or $array[ @ARGV[2] ] eq "./."
+			or $array[ @ARGV[3] ] eq "./." )
 		{
 			print "C:".$line."\n";
 			$outArrayC[$countC] = $line . "\n";
@@ -43,8 +43,8 @@ while ( $line = <IN> ) {
 		else {
 			$outArrayD[$countD] = $line . "\n";
 			$countD++;
-			my @arrayT1 = split( "\/", $array[ $ARGV[3] ] );
-			my @arrayT2 = split( "\/", $array[ $ARGV[4] ] );
+			my @arrayT1 = split( "\/", $array[ $ARGV[2] ] );
+			my @arrayT2 = split( "\/", $array[ $ARGV[3] ] );
 			if (    ( $arrayT1[0] eq $arrayT1[1] )
 				and ( $arrayT2[0] eq $arrayT2[1] ) )
 			{
