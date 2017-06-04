@@ -1,9 +1,10 @@
 #!/bin/perl
 # Main procedure for the analysis
-# perl main.pl out.tab 10 3 4
+# perl main.pl /scratch/WGSAnnotation/data/out.tab 10 3 4
 
 use strict;
 
+#input/output file handler
 open( IN,   $ARGV[0] )                     or die("Cannot find INPUT\n");
 open( OUTC, ">diff" . $ARGV[1] . "c.txt" ) or die("Cannot find OUTPUTc\n");
 open( OUTD, ">diff" . $ARGV[1] . "d.txt" ) or die("Cannot find OUTPUTd\n");
@@ -28,6 +29,7 @@ my @outArrayDhete;
 
 my $count = 0;
 my $line;
+# contents of file are installed in $line
 while ( $line = <IN> ) {
 	chomp($line);
 	my @array = split( "\\s+", $line );
@@ -87,6 +89,8 @@ print "Patient: "
   . $countDhohe
   . " DiffHete "
   . $countDhete . "\n";
+
+#Add tasks a-d here
 
 close IN;
 print OUTC @outArrayC;
