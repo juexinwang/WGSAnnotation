@@ -1,3 +1,6 @@
+#!/bin/perl
+# Main procedure for the analysis
+
 open(IN,"out.tab") or die("Cannot find INPUT\n");
 open(OUT1,">diff1.txt") or die("Cannot find OUTPUT1\n");;
 open(OUT1d,">diff1d.txt") or die("Cannot find OUTPUT1d\n");;
