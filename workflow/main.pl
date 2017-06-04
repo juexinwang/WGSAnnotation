@@ -31,45 +31,46 @@ my $line;
 while ( $line = <IN> ) {
 	chomp($line);
 	my @array = split( "\\s+", $line );
+
 	if ( $count > 0 ) {
-		if (   $array[ @ARGV[2] ] eq $array[ @ARGV[3] ]
-			or $array[ @ARGV[2] ] eq "./."
-			or $array[ @ARGV[3] ] eq "./." )
+		my @arrayT1 = split( "\/", $array[ $ARGV[2] ] );
+		my @arrayT2 = split( "\/", $array[ $ARGV[3] ] );
+		if (   $array[ $ARGV[2] ] eq $array[ $ARGV[3] ]
+			or $array[ $ARGV[2] ] eq "./."
+			or $array[ $ARGV[3] ] eq "./."
+			or ( $arrayT1[0] eq $arrayT2[1] and $arrayT1[1] eq $arrayT2[0] )
+		  )
 		{
-			print "C:".$line."\n";
 			$outArrayC[$countC] = $line . "\n";
 			$countC++;
 		}
 		else {
 			$outArrayD[$countD] = $line . "\n";
 			$countD++;
-			my @arrayT1 = split( "\/", $array[ $ARGV[2] ] );
-			my @arrayT2 = split( "\/", $array[ $ARGV[3] ] );
+
 			if (    ( $arrayT1[0] eq $arrayT1[1] )
 				and ( $arrayT2[0] eq $arrayT2[1] ) )
 			{
-				print "Dhomo:".$line."\n";
 				$outArrayDhomo[$countDhomo] = $line . "\n";
 				$countDhomo++;
 			}
 			elsif (
-				( $arrayT1[0] eq $arrayT1[1] and $arrayT2[0] ne $arrayT2[1] ) 
-			  or ( $arrayT1[0] ne $arrayT1[1] and $arrayT2[0] eq $arrayT2[1] ) )
-			  {
-			  	  print "Dhohe:".$line."\n";
-				  $outArrayDhohe[$countDhohe] = $line . "\n";
-				  $countDhohe++;
+				   ( $arrayT1[0] eq $arrayT1[1] and $arrayT2[0] ne $arrayT2[1] )
+				or
+				( $arrayT1[0] ne $arrayT1[1] and $arrayT2[0] eq $arrayT2[1] ) )
+			{
+				$outArrayDhohe[$countDhohe] = $line . "\n";
+				$countDhohe++;
 			}
 			else {
-				  print "Dhete:".$line."\n";
-				  $outArrayDhete[$countDhete] = $line . "\n";
-				  $countDhete++;
+				$outArrayDhete[$countDhete] = $line . "\n";
+				$countDhete++;
 			}
 		}
 
 	}
 	if ( $count % 1000000 == 0 ) {
-		  print $count. "\n";
+		print $count. "\n";
 	}
 	$count++;
 }
