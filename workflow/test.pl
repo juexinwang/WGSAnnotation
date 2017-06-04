@@ -1,3 +1,9 @@
+$line="A/T";
+@array=split("\/",$line);
+print $array[0]."\n";
+print $array[1]."\n";
+
+
 # create a simple perl hash
 $prices{'pizza'} = 12.00;
  $prices{'coke'} = 1.25;
