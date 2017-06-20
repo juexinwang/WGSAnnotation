@@ -1,5 +1,6 @@
 #!/bin/perl
 # Main procedure for the analysis
+# Usage:
 # perl main.pl /scratch/WGSAnnotation/data/out.tab 10 3 4
 
 use strict;
